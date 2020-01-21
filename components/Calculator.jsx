@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
 import { create, all } from 'mathjs';
 
 export default class CalculatorContainer extends Component {
@@ -10,63 +10,64 @@ export default class CalculatorContainer extends Component {
             <View style={styles.output}>
               <Text style={styles.text}></Text>
             </View>
-            <View style={styles.util}>
+            <TouchableOpacity style={styles.util}>
               <Text style={styles.text}>ac</Text>
-            </View>
-            <View style={styles.util}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.util}>
               <Text style={styles.text}>+/-</Text>
-            </View>
-            <View style={styles.util}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.util}>
               <Text style={styles.text}>%</Text>
-            </View>
-            <View style={styles.operations}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.operations}>
               <Text style={styles.text}>÷</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>7</Text>
-            </View>
-            <View style={styles.numbers}>
+              {/* <Button style={styles.text}>7</Button> */}
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>8</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>9</Text>
-            </View>
-            <View style={styles.operations}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.operations}>
               <Text style={styles.text}>x</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>4</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>5</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>6</Text>
-            </View>
-            <View style={styles.operations}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.operations}>
               <Text style={styles.text}>-</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>1</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>2</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>3</Text>
-            </View>
-            <View style={styles.operations}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.operations}>
               <Text style={styles.text}>+</Text>
-            </View>
-            <View style={styles.zero}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.zero}>
               <Text style={styles.text}>0</Text>
-            </View>
-            <View style={styles.numbers}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.numbers}>
               <Text style={styles.text}>.</Text>
-            </View>
-            <View style={styles.equals}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.equals}>
               <Text style={styles.text}>=</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         );
     }
