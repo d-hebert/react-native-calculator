@@ -4,7 +4,7 @@
 <br>
 
 <p align="center">
-<img width="508" alt="Calculator screenshot" src="https://github.com/d-hebert/react-native-calculator/blob/master/assets/calc_screenshot.jpg?raw=true">
+<img width="350" alt="Calculator screenshot" src="https://github.com/d-hebert/react-native-calculator/blob/master/assets/calc_screenshot.jpg?raw=true">
 </p>
 
 <br>
