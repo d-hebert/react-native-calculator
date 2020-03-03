@@ -7,16 +7,22 @@ export default class CalculatorContainer extends Component {
       super(props)
       this.state = {
         output: '',
-        expression: []
+        expression: [],
       }
 
       this.math = create(all);
     }
 
-    handleClearing () {
-      this.setState({
-        output: ''
-      })
+    handleClearing (type) {
+      if (type === 'ac') {
+        this.setState({
+          expression: [],
+        })
+      } else {
+        this.setState({
+          output: '',
+        })
+      }
     }
 
     compute () {
@@ -50,12 +56,17 @@ export default class CalculatorContainer extends Component {
     }
 
     handleUtil (util) {
-      const output = '';
+      let output = '';
       const curr = this.state.output;
-      if (util === '+/-') {
+      {if (util === '+/-') {
         if (curr[0] === '-') { output = curr.slice(1) }
         else { output = '-' + curr }
-      }
+      } else {
+        output = (parseFloat(curr) / 100).toString()
+      }}
+      this.setState({
+        output,
+      })
     }
 
     createNumberButton (digit) {
@@ -105,12 +116,13 @@ export default class CalculatorContainer extends Component {
     }
 
     createClearButton () {
+      const symbol = this.state.output.length ? 'c' : 'ac'
       return (
         <TouchableOpacity style={styles.util}
           onPress={() => {
             this.handleClearing();
           }}>
-          <Text style={styles.text}>ac</Text>
+          <Text style={styles.text}>{symbol}</Text>
         </TouchableOpacity>
       )
     }
