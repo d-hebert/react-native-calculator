@@ -62,7 +62,11 @@ export default class CalculatorContainer extends Component {
         if (curr[0] === '-') { output = curr.slice(1) }
         else { output = '-' + curr }
       } else {
-        output = (parseFloat(curr) / 100).toString()
+        if (curr.length <= 6 ) {
+          output = (parseFloat(curr) / 100).toString();
+        } else {
+          output = curr;
+        }
       }}
       this.setState({
         output,
