@@ -40,7 +40,7 @@ export default class CalculatorContainer extends Component {
       // Enforces display length 9 max
       if (this.state.output.length >= 9) {return}
       this.setState(prevState => ({
-        output: prevState.output.concat(digit)
+        output: prevState.output += digit
       }));
     }
 
