@@ -34,6 +34,7 @@ export default class CalculatorContainer extends Component {
       this.setState({
         output,
         expression: [],
+        operationActive: true,
         currentOperation: '',
       })
     }
@@ -159,6 +160,7 @@ export default class CalculatorContainer extends Component {
         return (
           <View style={styles.container}>
             <View style={styles.space}></View>
+            <View style={styles.space}></View>
             {this.createOutputScreen()}
             {this.createClearButton()}
             {this.createUtilButton('+/-')}
@@ -195,7 +197,7 @@ const styles = StyleSheet.create({
   },
   space: {
     width: 300,
-    height: 50
+    height: 30
   },
   util: {
     // flex: 1,
