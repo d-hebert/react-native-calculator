@@ -9,5 +9,7 @@
 
 <br>
 
+Launch development server with expo by running `npm start`
+
 *JavaScript, React Native, Expo, math.js*
 
