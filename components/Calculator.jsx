@@ -8,6 +8,8 @@ export default class CalculatorContainer extends Component {
       this.state = {
         output: '',
         expression: [],
+        operationActive: false,
+        currentOperation: '',
       }
 
       this.math = create(all);
@@ -26,32 +28,39 @@ export default class CalculatorContainer extends Component {
     }
 
     compute () {
-      console.log(this.state.expression)
       const currentNumber = this.state.output;
       const expression = [...this.state.expression, currentNumber].join(' ');
       const output = this.math.evaluate(expression);
       this.setState({
         output,
-        expression: []
+        expression: [],
+        currentOperation: '',
       })
     }
 
     handleNumbers (digit) {
       // Enforces display length 9 max
+      if (this.state.operationActive) { 
+        this.setState({ 
+          output: '',
+          operationActive: false,
+       }) }
       if (this.state.output.length >= 9) {return}
       this.setState(prevState => ({
-        output: prevState.output += digit
+        output: prevState.output += digit,
       }));
     }
 
     handleOperation (operation) {
+      const hold = operation;
       if (operation === '÷') { operation = '/' }
       if (operation === 'x') { operation = '*' }
       const currentNumber = this.state.output;
       const expression = [...this.state.expression, currentNumber, operation];
       this.setState({
-        output: '',
-        expression
+        expression,
+        operationActive: true,
+        currentOperation: hold,
       });
     }
 
@@ -76,7 +85,8 @@ export default class CalculatorContainer extends Component {
     createNumberButton (digit) {
       const style = digit === '0' ? styles.zero : styles.numbers;
       return (
-        <TouchableOpacity style={style}
+        <TouchableOpacity 
+          style={style}
           onPress={() => {
             this.handleNumbers(digit);
           }
@@ -87,8 +97,10 @@ export default class CalculatorContainer extends Component {
     }
 
     createOperationButton (operation) {
+      const operationStyle = (this.state.currentOperation === operation) ? styles.activeOperation : styles.operations;
       return (
-        <TouchableOpacity style={styles.operations}
+        <TouchableOpacity
+          style={operationStyle}
           onPress={() => {
             this.handleOperation(operation);
           }}>
@@ -99,7 +111,8 @@ export default class CalculatorContainer extends Component {
 
     createUtilButton (util) {
       return (
-        <TouchableOpacity style={styles.util}
+        <TouchableOpacity 
+          style={styles.util}
           onPress={() => {
             this.handleUtil(util);
           }}>
@@ -110,7 +123,8 @@ export default class CalculatorContainer extends Component {
 
     createEqualsButton () {
       return (
-        <TouchableOpacity style={styles.equals}
+        <TouchableOpacity 
+          style={styles.equals}
           onPress={() => {
             this.compute();
           }}>
@@ -122,7 +136,8 @@ export default class CalculatorContainer extends Component {
     createClearButton () {
       const symbol = this.state.output.length ? 'c' : 'ac'
       return (
-        <TouchableOpacity style={styles.util}
+        <TouchableOpacity 
+          style={styles.util}
           onPress={() => {
             this.handleClearing();
           }}>
@@ -203,6 +218,17 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     backgroundColor: "skyblue"
+  },
+  activeOperation: {
+    // flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 4,
+    borderWidth: 0.25,
+    borderColor: "white",
+    width: 75,
+    height: 75,
+    backgroundColor: "lightsalmon"
   },
   equals: {
     // flex: 1,
